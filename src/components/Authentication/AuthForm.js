@@ -28,7 +28,7 @@ const AuthForm = (props) => {
     if (isLogin) {
       setIsLoading(true);
       // if isLogin is true, then authenticate existing user
-      fetch(`http://127.0.0.1:5000/auth`, {
+      fetch(`https://store-item-restful-api.herokuapp.com/auth`, {
         method: "POST",
         body: JSON.stringify({
           username: enteredUsername,
@@ -58,7 +58,7 @@ const AuthForm = (props) => {
     } else {
       setIsLoading(true);
       // else if isLogin is false, create new user
-      fetch(`http://127.0.0.1:5000/register`, {
+      fetch(`https://store-item-restful-api.herokuapp.com/register`, {
         method: "POST",
         body: JSON.stringify({
           username: enteredUsername,

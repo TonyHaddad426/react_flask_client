@@ -19,7 +19,7 @@ function App() {
   const [error, setError] = useState(null);
 
   const createItemHandler = (data) => {
-    fetch(`http://127.0.0.1:5000/item/${data.item}`, {
+    fetch(`https://store-item-restful-api.herokuapp.com/item/${data.item}`, {
       method: "POST",
       body: JSON.stringify({
         item_price: data.item_price,
@@ -46,7 +46,7 @@ function App() {
 
   useEffect(() => {
     // UPDATE STORE DROPDOWN LIST SINCE NEW STORE WAS ADDED
-    fetch(`http://127.0.0.1:5000/stores`)
+    fetch(`https://store-item-restful-api.herokuapp.com/stores`)
       .then((response) => {
         return response.json(); // return promise
       })
@@ -62,7 +62,7 @@ function App() {
 
   const createStoreHandler = (data) => {
     console.log(data.store);
-    fetch(`http://127.0.0.1:5000/store/${data.store}`, {
+    fetch(`https://store-item-restful-api.herokuapp.com/store/${data.store}`, {
       method: "POST",
       body: null,
       headers: {
@@ -102,7 +102,7 @@ function App() {
     // a store and item value were entered by the user
     if (data.store.trim().length > 0 && data.item.trim().length > 0) {
       console.log("a store and item value were entered by the user");
-      fetch(`http://127.0.0.1:5000/store/${data.store}/${data.item}`)
+      fetch(`https://store-item-restful-api.herokuapp.com/store/${data.store}/${data.item}`)
         .then((response) => {
           console.log("response", response);
           return response.json(); // return promise
@@ -128,7 +128,7 @@ function App() {
     // only a store value was entered by the user
     if (data.store.trim().length > 0 && data.item.trim().length == 0) {
       console.log("only a store value was entered by the user", data.store);
-      fetch(`http://127.0.0.1:5000/store/${data.store}`)
+      fetch(`https://store-item-restful-api.herokuapp.com/store/${data.store}`)
         .then((response) => {
           console.log("response", response);
           return response.json(); // return promise
@@ -152,7 +152,7 @@ function App() {
     // only an item value was entered by the user
     if (data.store.trim().length == 0 && data.item.trim().length > 0) {
       console.log("only an item value was entered by the user");
-      fetch(`http://127.0.0.1:5000/item/${data.item}`)
+      fetch(`https://store-item-restful-api.herokuapp.com/item/${data.item}`)
         .then((response) => {
           console.log("response", response);
           return response.json(); // return promise
