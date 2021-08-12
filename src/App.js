@@ -94,7 +94,7 @@ function App() {
     setIsLoading(true);
     setError(null);
     if (data.store.trim().length == 0 && data.item.trim().length == 0) {
-      setError("Enter an item to check across all stores");
+      setError("Enter an item to check across All Stores or select a specific store");
       setIsLoading(false);
     }
     // the input to fetchItemsHandler is passed from components UserForm.js -> ListItems.js -> App.js
