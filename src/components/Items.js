@@ -1,43 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Item from "./Item";
 import "./Items.css";
 import Filter from "./Filter";
 function Items(props) {
-  const [priceFilter, setPriceFiler] = useState("");
-  const [alphabetFilter, setAlphabetFiler] = useState("");
+  const [priceFilter, setPriceFilter] = useState({
+    value: "",
+    lastUpdated: "",
+  });
+  const [alphabetFilter, setAlphabetFilter] = useState({
+    value: "",
+    lastUpdated: "",
+  });
 
   let filteredItems = props.items;
 
   const priceFilterChangedHandler = (selectedPriceFilter) => {
-    setPriceFiler(selectedPriceFilter);
+    setPriceFilter({ value: selectedPriceFilter, lastUpdated: new Date() });
   };
-
-  if (priceFilter === "Asc") {
-    filteredItems = props.items.sort((a, b) => a.item_price - b.item_price);
-  }
-  if (priceFilter === "Desc") {
-    filteredItems = props.items.sort((a, b) => b.item_price - a.item_price);
-  }
 
   const alphabetFilterChangedHandler = (selectedAlphabetFilter) => {
-    setAlphabetFiler(selectedAlphabetFilter);
+    setAlphabetFilter({
+      value: selectedAlphabetFilter,
+      lastUpdated: new Date(),
+    });
   };
 
-  if (alphabetFilter === "Asc") {
-    filteredItems = props.items.sort((a, b) => b.item_name.localeCompare(a.item_name));
+
+  if (alphabetFilter.lastUpdated > priceFilter.lastUpdated) {
+    if (alphabetFilter.value === "Asc") {
+      filteredItems = props.items.sort((a, b) =>
+        b.item_name.localeCompare(a.item_name)
+      );
+    }
+
+    if (alphabetFilter.value === "Desc") {
+      filteredItems = props.items.sort((a, b) =>
+        a.item_name.localeCompare(b.item_name)
+      );
+    }
   }
 
-  if (alphabetFilter === "Desc") {
-    filteredItems = props.items.sort((a, b) => a.item_name.localeCompare(b.item_name))
+  if (alphabetFilter.lastUpdated < priceFilter.lastUpdated) {
+    if (priceFilter.value === "Asc") {
+      filteredItems = props.items.sort((a, b) => a.item_price - b.item_price);
+    }
+    if (priceFilter.value === "Desc") {
+      filteredItems = props.items.sort((a, b) => b.item_price - a.item_price);
+    }
   }
-  
 console.log(filteredItems)
-
   return (
     <div className="items">
       <Filter
-        priceFilterSelection={priceFilter}
-        alphabetFilterSelection={alphabetFilter}
+        priceFilterSelection={priceFilter.value}
+        alphabetFilterSelection={alphabetFilter.value}
         onPriceChangeFilter={priceFilterChangedHandler}
         onAlphabetChangeFilter={alphabetFilterChangedHandler}
       />
