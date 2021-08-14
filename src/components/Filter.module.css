@@ -1,7 +1,11 @@
 .filter {
     color: white;
     padding: 0 1rem;
+
   }
+
+
+
   
   .filter__control {
     display: flex;
@@ -24,4 +28,33 @@
     padding: 0.5rem 3rem;
     font-weight: bold;
     border-radius: 6px;
+  }
+
+
+  .user button {
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid #eec7f3;
+    background-color: #eec7f3;
+    color: white;
+    border-radius: 12px;
+    margin-right: 1rem;
+  }
+  
+  .filter button:hover,
+  .filter button:active {
+    background-color: #eec7f3;
+    border-color: #eec7f3;
+  }
+  
+  .filter button.alternative {
+    color: #220131;
+    border-color: transparent;
+    background-color: transparent;
+  }
+  
+  .filter button.alternative:hover,
+  .filter button.alternative:active {
+    background-color: #eec7f3;
   }
