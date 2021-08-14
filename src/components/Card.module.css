@@ -7,4 +7,21 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  animation: openCard 0.4s ease-out forwards;
+}
+
+
+@keyframes openCard {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -100%)
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -20%)
+  } 
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%)
+  }
 }
