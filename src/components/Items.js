@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Item from "./Item";
 import "./Items.css";
 import Filter from "./Filter";
+
 function Items(props) {
   const [priceFilter, setPriceFilter] = useState({
     value: "",
@@ -25,9 +26,7 @@ function Items(props) {
     });
   };
 
-
   if (alphabetFilter.lastUpdated > priceFilter.lastUpdated) {
-
     if (alphabetFilter.value === "Asc") {
       filteredItems = props.items.sort((a, b) =>
         b.item_name.localeCompare(a.item_name)
@@ -39,17 +38,16 @@ function Items(props) {
         a.item_name.localeCompare(b.item_name)
       );
     }
-    console.log("alphabet selection: ", alphabetFilter)
+    console.log("alphabet selection: ", alphabetFilter);
   }
 
   if (alphabetFilter.lastUpdated < priceFilter.lastUpdated) {
-    
     if (priceFilter.value === "Asc") {
       filteredItems = props.items.sort((a, b) => a.item_price - b.item_price);
     }
     if (priceFilter.value === "Desc") {
       filteredItems = props.items.sort((a, b) => b.item_price - a.item_price);
-      console.log("price selection: ", priceFilter)
+      console.log("price selection: ", priceFilter);
     }
   }
 
@@ -61,6 +59,7 @@ function Items(props) {
         onPriceChangeFilter={priceFilterChangedHandler}
         onAlphabetChangeFilter={alphabetFilterChangedHandler}
       />
+      =
       {
         /* the map method takes an array and executes a function on each item within that array */
         filteredItems.map((item) => (

@@ -49,7 +49,7 @@ const AuthForm = (props) => {
           }
           setTimeout(() => {
             setIsLoading(false);
-          }, 2000);
+          }, 1000);
           console.log("JWT ", data.access_token);
           authCtx.login(data.access_token, Date.now() + 3600000); // persist auth token provided by flask backend server
           history.replace("/admin"); // use history object to call the replace method

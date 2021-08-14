@@ -8,8 +8,6 @@ import AuthForm from "./components/Authentication/AuthForm";
 import Spinner from "./components/Spinner";
 import AuthContext from "./components/Store/Auth-Context";
 
-
-
 function App() {
   const authCtx = useContext(AuthContext);
   const [items, setItems] = useState([]);
@@ -120,7 +118,7 @@ function App() {
 
       setTimeout(() => {
         setIsLoading(false);
-      }, 2000);
+      }, 1000);
 
       console.log("Displaying items state", items);
       return;
@@ -144,7 +142,7 @@ function App() {
         .catch((err) => setError(err.message));
       setTimeout(() => {
         setIsLoading(false);
-      }, 2000);
+      }, 1000);
       // setIsLoading(false)
       console.log("Displaying items state", items);
       return;
@@ -168,7 +166,7 @@ function App() {
         .catch((err) => setError(err.message));
       setTimeout(() => {
         setIsLoading(false);
-      }, 2000);
+      }, 1000);
       // setIsLoading(false)
       console.log("Displaying items state", items);
       return;
@@ -194,7 +192,7 @@ function App() {
               storeNameList={storeDropdownList}
               onAddItems={fetchItemsHandler}
             />
-            {!isLoading && items.length > 0 && <Items items={items} />}
+            {!isLoading && items.length > 0 && <Items items={items} /> }
             {!isLoading && items.length === 0 && !error && (
               <p>Found no items</p>
             )}
